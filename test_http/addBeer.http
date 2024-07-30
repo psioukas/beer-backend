@@ -1,0 +1,19 @@
+POST http://localhost:3000/api/beers
+Content-Type: Application/json
+
+{
+  "name": "Heineken",
+  "type": "Lager",
+  "rating": 3
+}
+
+###
+
+POST http://localhost:3000/api/beers
+Content-Type: Application/json
+
+{
+  "name": "Stella Artois",
+  "type": "Pilsner",
+  "rating": 4
+}

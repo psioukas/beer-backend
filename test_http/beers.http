@@ -1,0 +1,26 @@
+POST http://localhost:3000/api/beers
+Content-Type: Application/json
+
+{
+  "name": "Stella Artois",
+  "type": "pilsner",
+  "rating": 3
+}
+
+###
+
+GET http://localhost:3000/api/beers
+
+###
+DELETE http://localhost:3000/api/beers/1
+
+###
+
+POST http://localhost:3000/api/beers/update-rating/2
+Content-Type: Application/json
+
+{
+  "rating": 5
+}
+
+###
