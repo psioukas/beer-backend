@@ -3,6 +3,9 @@ import beerRouter from './routes/beer';
 import morgan from 'morgan';
 import Database from './utils/database';
 import { errorHandler } from './utils/middlewares';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // Database Connection
 Database.init('./db-test.sqlite');
