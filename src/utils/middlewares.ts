@@ -7,9 +7,9 @@ export function errorHandler(
     next: NextFunction,
 ) {
     if (res.headersSent) {
-        return next(error);
+        next(error);
+        return;
     }
-    console.error('Error - Middleware: \n', error);
     res.status(500).json({ success: false, message: 'Something went wrong!' });
 }
 
@@ -18,7 +18,7 @@ export function wrapRequestWithTryCatch<T = unknown, Q = unknown>(
         req: Request<T, {}, {}, Q>,
         res: Response,
         next?: NextFunction,
-    ) => void,
+    ) => Promise<void> | void,
 ) {
     return async function (
         req: Request<T, {}, {}, Q>,
@@ -26,7 +26,7 @@ export function wrapRequestWithTryCatch<T = unknown, Q = unknown>(
         next: NextFunction,
     ) {
         try {
-            routeHandler(req, res, next);
+            await routeHandler(req, res, next);
         } catch (error) {
             next(error);
         }
